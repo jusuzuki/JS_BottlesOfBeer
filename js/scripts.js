@@ -6,7 +6,7 @@ var bottlesOfBeer = function(number) {
   } else if (number === 2) {
     return ' 2 bottles of beer on the wall, 2 bottles of beer.  Take one down, pass it around, 1 bottle of beer on the wall.' +  bottlesOfBeer(number - 1);
   } else {
-    return "\n" + number + ' bottles of beer on the wall, ' + number + ' bottles of beer. Take one down and pass it around, ' + (number - 1) + ' bottles of beer on the wall.' +  bottlesOfBeer(number - 1);
+    return number + ' bottles of beer on the wall, ' + number + ' bottles of beer. Take one down and pass it around, ' + (number - 1) + ' bottles of beer on the wall.' +  bottlesOfBeer(number - 1);
     }
   }
 
@@ -16,6 +16,8 @@ $(document).ready(function() {
     var number = parseInt($("input#number").val());
     if(isNaN(number)) {
       $(".song").text("Can't sing to that!");
+    } else if (number < 0) {
+      $(".song").text("Sorry, too drunk to sing negative numbers!");
     } else {
       var result = bottlesOfBeer(number);
       $(".song").text(result);
